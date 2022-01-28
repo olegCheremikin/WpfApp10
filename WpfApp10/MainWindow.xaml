@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp10"
+        mc:Ignorable="d"
+    Title="Отражение" Height="700" Width="700" Background="#FF95862B">
+    <StackPanel>
+        <Border BorderBrush="#FFD49D9D" BorderThickness="5" Margin="10"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="Data/reWalls.png" Width="500" Height="280" x:Name="reWallsImage"/>
+            <Border.Effect>
+                <DropShadowEffect Color="#FF006442" Direction="40" ShadowDepth="20" Opacity="0.4"/>
+            </Border.Effect>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="0" CenterY="0" AngleX="0" AngleY="10"/>
+            </Border.RenderTransform>
+        </Border>
+        <Border Width="500" Height="300" >
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1.048" ScaleX="1.015"/>
+                    <SkewTransform AngleX="-9.067"/>
+                    <RotateTransform Angle="10"/>
+                    <TranslateTransform Y="-1.763"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=reWallsImage}">
+                    <VisualBrush.Transform>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="200" CenterY="150">
+
+                        </ScaleTransform>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Black"/>
+                    <GradientStop Offset="0.6" Color="Transparent"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+        </Border>
+    </StackPanel>
+</Window>
